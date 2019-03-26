@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.summer.graduate.dao.UserDao">
+    <!--用于登录-->
+    <select id="getUserByNameAngPasw" parameterType="String" resultType="User">
+        SELECT username, type FROM t_users WHERE username = #{username} AND password = #{password}
+    </select>
+
+    <!--用于注册-->
+    <insert id="createUser" parameterType="String">
+      INSERT INTO  t_users(ID, username, password) VALUES(SEQ_T_USERS_ID.NEXTVAL, #{username}, #{password})
+    </insert>
+
+    <select id="getUserByUsername" parameterType="String" resultType="User">
+      SELECT username FROM t_users WHERE username = #{username}
+    </select>
+
+    <update id="updateUser" parameterType="String">
+        update t_users set password = #{password} where username = #{username}
+    </update>
+
+    <select id="getUsers" parameterType="String" resultType="User">
+        SELECT id, username, password, type FROM t_users WHERE username != 'admin'
+        <if test="username != null and username != ''">
+            AND username = #{username}
+        </if>
+    </select>
+
+    <update id="upgradeOrDowngrade">
+        UPDATE t_users SET
+        <choose>
+            <when test="type == 0">
+                TYPE = '1'
+            </when>
+            <otherwise>
+                TYPE = '0'
+            </otherwise>
+        </choose>
+        WHERE username = #{username}
+    </update>
+</mapper>

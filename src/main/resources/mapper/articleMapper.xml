@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.summer.graduate.dao.ArticleDao">
+    <select id="showAllArticle" resultType="Article">
+        SELECT id, title FROM knowledge_base
+    </select>
+
+    <insert id="addArticle" parameterType="Article">
+      INSERT INTO knowledge_base(ID, title, text) VALUES(SEQ_knowledge_base_ID.NEXTVAL, #{title}, #{text})
+    </insert>
+
+    <select id="getArticleByTitle" parameterType="String" resultType="Article">
+      SELECT * FROM knowledge_base WHERE title = #{title}
+    </select>
+
+    <update id="updateArticle" parameterType="String">
+        UPDATE knowledge_base SET title = #{title},text = #{text} WHERE id = #{id}
+    </update>
+
+    <delete id="deleteArticle" parameterType="Integer">
+        DELETE FROM knowledge_base WHERE ID = #{id}
+    </delete>
+</mapper>
