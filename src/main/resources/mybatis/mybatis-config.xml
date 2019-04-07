@@ -9,5 +9,10 @@
     <typeAliases>
         <typeAlias type="com.summer.graduate.entities.User" alias="User"/>
         <typeAlias type="com.summer.graduate.entities.Article" alias="Article"/>
+        <typeAlias type="com.summer.graduate.entities.ChatRecord" alias="ChatRecord"/>
+        <typeAlias type="com.summer.graduate.entities.PurchaseRecord" alias="PurchaseRecord"/>
+        <typeAlias type="com.summer.graduate.entities.Evaluation" alias="Evaluation"/>
+        <typeAlias type="com.summer.graduate.entities.Good" alias="Good"/>
+        <typeAlias type="com.summer.graduate.entities.Order" alias="Order"/>
     </typeAliases>
 </configuration>

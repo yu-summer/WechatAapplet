@@ -2,19 +2,19 @@ package com.summer.graduate.entities;
 
 import lombok.Data;
 
+import java.util.Date;
+
 /**
- * @ClassName com.summer.graduate.entities.User
+ * @ClassName com.summer.graduate.entities.ChatRecord
  * @Description TODO
  * @Author summer
- * @Date 2019/3/8 15:24
+ * @Date 2019/4/2 17:23
  * @Version 1.0
  **/
 @Data
-public class User {
+public class ChatRecord {
 	private Integer id;
 	private String username;
-	private String password;
-	private Integer type;
-	private String address;
+	private String text;
+	private Date ts;
 }
- 

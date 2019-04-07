@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.summer.graduate.dao.GoodDao">
+    <select id="showGoods" resultType="Good">
+        SELECT * FROM goods_info
+    </select>
+
+    <select id="showGoodById" resultType="Good">
+        SELECT * FROM goods_info WHERE id = #{id}
+    </select>
+
+    <insert id="addOrder" parameterType="Order">
+        INSERT INTO purchase_record(ID, username, good_id, quantity, money, is_pay, good_name, price)
+        VALUES(SEQ_purchase_record_ID.NEXTVAL, #{username}, #{good_id}, #{quantity}, #{money}, 1, #{good_name}, #{price})
+    </insert>
+
+    <select id="getAllOrderByUsername" parameterType="String" resultType="Order">
+        SELECT * FROM purchase_record WHERE username = #{username} AND is_pay = '1'
+    </select>
+
+    <delete id="deleteOrderById" parameterType="Integer">
+        DELETE FROM purchase_record WHERE id = #{id}
+    </delete>
+
+    <insert id="addToShoppingCart" parameterType="Order">
+        INSERT INTO purchase_record(ID, username, good_id, quantity, money, is_pay, good_name, price)
+        VALUES(SEQ_purchase_record_ID.NEXTVAL, #{username}, #{good_id}, #{quantity}, #{money}, 0, #{good_name}, #{price})
+    </insert>
+
+    <delete id="deleteShoppingCart" parameterType="Integer">
+        DELETE FROM purchase_record WHERE id = #{id}
+    </delete>
+
+    <select id="getAllCartByUsername" parameterType="String" resultType="Order">
+        SELECT * FROM purchase_record WHERE username = #{username} AND is_pay = '0'
+    </select>
+
+    <update id="updateCartById">
+        UPDATE purchase_record SET quantity = #{quantity} ,money = #{money} WHERE id = #{id}
+    </update>
+
+    <update id="settlementCart" parameterType="java.util.List">
+        UPDATE purchase_record SET is_pay = '1' WHERE ID IN
+        <foreach collection="ids" index="index" item="item" open="(" separator="," close=")">
+            #{item}
+        </foreach>
+    </update>
+</mapper>

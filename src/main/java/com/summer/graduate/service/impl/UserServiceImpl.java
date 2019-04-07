@@ -26,8 +26,8 @@ public class UserServiceImpl implements UserService {
 	}
 
 	@Override
-	public void createUser(String username, String password) {
-		userDao.createUser(username, password);
+	public void createUser(String username, String password, String address) {
+		userDao.createUser(username, password, address);
 	}
 
 	@Override
@@ -36,8 +36,8 @@ public class UserServiceImpl implements UserService {
 	}
 
 	@Override
-	public void updateUser(String username, String password) {
-		userDao.updateUser(username, password);
+	public void updateUser(String username, String password, String address) {
+		userDao.updateUser(username, password, address);
 	}
 
 	@Override

@@ -9,7 +9,7 @@
 
     <!--用于注册-->
     <insert id="createUser" parameterType="String">
-      INSERT INTO  t_users(ID, username, password) VALUES(SEQ_T_USERS_ID.NEXTVAL, #{username}, #{password})
+      INSERT INTO  t_users(ID, username, password, address) VALUES(SEQ_T_USERS_ID.NEXTVAL, #{username}, #{password}, #{address})
     </insert>
 
     <select id="getUserByUsername" parameterType="String" resultType="User">
@@ -17,7 +17,7 @@
     </select>
 
     <update id="updateUser" parameterType="String">
-        update t_users set password = #{password} where username = #{username}
+        update t_users set password = #{password}, address = #{address} where username = #{username}
     </update>
 
     <select id="getUsers" parameterType="String" resultType="User">

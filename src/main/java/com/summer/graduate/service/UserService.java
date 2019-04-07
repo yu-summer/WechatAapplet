@@ -11,14 +11,16 @@ public interface UserService {
 
 	//注册
 	void createUser(@Param("username") String username,
-	                @Param("password") String password);
+	                @Param("password") String password,
+	                @Param("address") String address);
 
 	//根据用户名查找用户，用于管理员查找用户或者用户注册时检查用户名是否存在
 	User getUserByUsername(@Param("username") String username);
 
 	//修改用户资料
 	void updateUser(@Param("username") String username,
-	                @Param("password") String password);
+	                @Param("password") String password,
+	                @Param("address") String address);
 
 	//用于管理员管理用户，获取所有用户或者根据用户名查找用户
 	List<User> getUsers(@Param("username") String username);

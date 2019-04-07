@@ -44,12 +44,12 @@ public class UserController {
 
 	@ResponseBody
 	@RequestMapping(value = "doRegister.do", method = RequestMethod.POST)
-	public Map<String, String> register(String username, String password) {
+	public Map<String, String> register(String username, String password, String address) {
 		String result = "fail";
 		if (userService.getUserByUsername(username) != null) {
 			result = "nameExist";
 		} else {
-			userService.createUser(username, password);
+			userService.createUser(username, password, address);
 			result = "success";
 		}
 		Map<String, String> resultMap = new HashMap<>();
@@ -59,9 +59,9 @@ public class UserController {
 
 	@ResponseBody
 	@RequestMapping(value = "update.do", method = RequestMethod.POST)
-	public Map<String, String> update(String username, String password) {
+	public Map<String, String> update(String username, String password, String address) {
 		String result = "fail";
-		userService.updateUser(username, password);
+		userService.updateUser(username, password, address);
 		result = "success";
 		Map<String, String> resultMap = new HashMap<>();
 		resultMap.put("result", result);

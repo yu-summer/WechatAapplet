@@ -10,12 +10,14 @@ public interface UserDao {
 	                                 @Param("password") String password);
 
 	void createUser(@Param("username") String username,
-	                @Param("password") String password);
+	                @Param("password") String password,
+	                @Param("address") String address);
 
 	User getUserByUsername(@Param("username") String username);
 
 	void updateUser(@Param("username") String username,
-	                @Param("password") String password);
+	                @Param("password") String password,
+	                @Param("address") String address);
 
 	List<User> getUsers(@Param("username") String username);
 

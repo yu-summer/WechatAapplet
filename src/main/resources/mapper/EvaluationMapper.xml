@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.summer.graduate.dao.EvaluationDao">
+    <insert id="addEvaluation" parameterType="Evaluation">
+        INSERT INTO commodity_evaluation(ID, good_id, username, content) VALUES(SEQ_commodity_evaluation_ID.NEXTVAL, #{good_id}, #{username}, #{content})
+    </insert>
+
+    <select id="getAllEvaluateByGoodId" parameterType="Integer" resultType="Evaluation">
+        SELECT * FROM commodity_evaluation WHERE good_id = #{good_id} ORDER BY ts DESC
+    </select>
+</mapper>
